@@ -1,5 +1,4 @@
 <?php
-// HTTP durum kodlarını getiren fonksiyonumuz. 
 function HttpStatus($code) {
 	$status = array(
         100 => 'Continue',  
@@ -44,17 +43,14 @@ function HttpStatus($code) {
         504 => 'Gateway Timeout',  
         505 => 'HTTP Version Not Supported');
     
-    // gönderilen kod listede yok ise 500 durum kodu gönderilsin. 
     return $status[$code] ? $status[$code] : $status[500];
 }
 
-// Header ayarlama fonksiyonu 
 function SetHeader($code){
     header("HTTP/1.1 ".$code." ".HttpStatus($code));
     header("Content-Type: application/json; charset=utf-8");
 }
 
-// kullanıcı adının uyumluluğunu kontrol eden fonksiyonumuz.
 function kullaniciAdi($s) {
     $tr = array('ş','Ş','ı','İ','ğ','Ğ','ü','Ü','ö','Ö','Ç','ç');
     $eng = array('s','s','i','i','g','g','u','u','o','o','c','c');
